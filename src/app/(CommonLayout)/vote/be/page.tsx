@@ -38,7 +38,7 @@ export default function Page() {
           </button>
         ))}
       </section>
-      <div className="text-themeColor text-[20px] font-semibold self-end mt-[20px] grow cursor-pointer">
+      <div className="text-themeColor text-[20px] font-semibold self-end mt-[20px] grow cursor-pointer" onClick={() => {router.push('/vote/be-result')}}>
         결과보기 ▶︎
       </div>
       <button className="bg-themeColor text-white w-full h-[70px] rounded-[10px] mt-[20px] mb-[40px] text-[28px] font-semibold">
