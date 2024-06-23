@@ -3,5 +3,5 @@ export default function layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return <div className="w-full sm:w-[640px] bg-backgroundColor h-dvh">{children}</div>;
 }
