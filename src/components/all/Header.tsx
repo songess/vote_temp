@@ -2,7 +2,7 @@ const DUMMYUSER = 'FE 홍길동'
 
 export function Header(){
     return (
-        <header className="w-full h-[80px] bg-white flex justify-between items-center px-[20px]">
+        <header className="w-full h-[80px] bg-white flex justify-between items-center px-[20px] absolute top-0 left-0">
             <h1 className="text-[28px] text-themeColor font-bold">CEOS</h1>
             <div className="flex gap-2 items-center">
               <span className='text-[16px]'>{DUMMYUSER}</span>
