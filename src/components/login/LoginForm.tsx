@@ -2,23 +2,23 @@ export default function LoginForm() {
   return (
     <form
       action=""
-      className="w-full h-[370px] flex flex-col items-center relative mb-4"
+      className="w-full h-[370px] flex flex-col gap-y-5 items-center relative mb-4"
     >
-      {/* <label htmlFor="name" className="w-[80%]">
-        이름
-      </label> */}
+      <label htmlFor="userId" className="w-[80%]">
+        아이디
+      </label>
       <input
         type="text"
-        id="name"
-        className="w-[80%] h-8 m-8"
+        id="userId"
+        className="w-[80%] h-8"
         placeholder="Enter your name"
       />
-      {/* <label htmlFor="password" className="w-[80%]">
+      <label htmlFor="userPassword" className="w-[80%]">
         비밀번호
-      </label> */}
+      </label>
       <input
         type="password"
-        id="password"
+        id="userPassword"
         className="w-[80%] h-8"
         placeholder="Enter your password"
       />
