@@ -13,7 +13,7 @@ export default function OrLogin() {
       </div>
       <div
         id="toSignUpButton"
-        className="w-full h-[60px] flex justify-center items-center mb-7"
+        className="w-full h-[60px] flex justify-center items-center mb-[60px]"
       >
         <button
           className="w-[108px] h-[42px] rounded-lg bg-white"
