@@ -2,6 +2,7 @@
 import ArrowBackSVG from '@public/arrowBack.svg';
 import { Header } from '@components/all/Header';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const CandidateName = [
   '임형준',
@@ -18,6 +19,10 @@ const CandidateName = [
 
 export default function Page() {
   const router = useRouter();
+  const [votedIdx,setVotedIdx] = useState<number>(-1);
+  const HandleSubmit = () => {
+    console.log({leaderName: CandidateName[votedIdx], userName: ''})
+  }
   return (
     <div className="flex flex-col w-full h-full px-[30px] relative pt-[80px] items-center">
       <Header />
@@ -31,17 +36,18 @@ export default function Page() {
       <section className="flex flex-wrap gap-[30px] w-full">
         {CandidateName.map((name, idx) => (
           <button
-            key={idx}
-            className="basis-[calc(50%-15px)] h-[70px] bg-white rounded-[10px] flex justify-center items-center shadow-md text-[28px] font-semibold"
-          >
-            {name}
-          </button>
+          key={idx}
+          onClick={()=>{setVotedIdx(idx)}}
+          className={`basis-[calc(50%-15px)] h-[70px] bg-white rounded-[10px] flex justify-center items-center shadow-md text-[28px] font-semibold ${idx === votedIdx ? 'border-2 border-themeColor' : ''}`}
+        >
+          {name}
+        </button>
         ))}
       </section>
       <div className="text-themeColor text-[20px] font-semibold self-end mt-[20px] grow cursor-pointer" onClick={() => {router.push('/vote/be-result')}}>
         결과보기 ▶︎
       </div>
-      <button className="bg-themeColor text-white w-full h-[70px] rounded-[10px] mt-[20px] mb-[40px] text-[28px] font-semibold">
+      <button onClick={HandleSubmit} className="bg-themeColor text-white w-full h-[70px] rounded-[10px] mt-[20px] mb-[40px] text-[28px] font-semibold">
         투표하기
       </button>
     </div>

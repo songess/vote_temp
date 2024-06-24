@@ -5,21 +5,21 @@ import CrownSVG from '@public/crown.svg';
 import { useRouter } from 'next/navigation';
 
 interface Candidate {
-	name: string;
+	leaderName: string;
 	voteCount: number;
 }
 
 const DUMMYCANDIDATERANKING:Candidate[] = [
-  { name: '김다희', voteCount: 10 },
-  { name: '김동혁', voteCount: 9 },
-  { name: '김민영', voteCount: 8 },
-  { name: '김수현', voteCount: 7 },
-  { name: '김승완', voteCount: 6 },
-  { name: '송은수', voteCount: 5 },
-  { name: '안혜연', voteCount: 4 },
-  { name: '이나현', voteCount: 3 },
-  { name: '이지인', voteCount: 2 },
-  { name: '조유담', voteCount: 1 },
+  { leaderName: '김다희', voteCount: 10 },
+  { leaderName: '김동혁', voteCount: 9 },
+  { leaderName: '김민영', voteCount: 8 },
+  { leaderName: '김수현', voteCount: 7 },
+  { leaderName: '김승완', voteCount: 6 },
+  { leaderName: '송은수', voteCount: 5 },
+  { leaderName: '안혜연', voteCount: 4 },
+  { leaderName: '이나현', voteCount: 3 },
+  { leaderName: '이지인', voteCount: 2 },
+  { leaderName: '조유담', voteCount: 1 },
 ];
 
 export default function Page() {
@@ -37,16 +37,16 @@ export default function Page() {
         <div className='absolute top-[-24px] left-[-18px]'>
           <CrownSVG />
         </div>
-        {DUMMYCANDIDATERANKING[0].name}
+        {DUMMYCANDIDATERANKING[0].leaderName}
       </div>
       <div className="my-[10px]">{DUMMYCANDIDATERANKING[0].voteCount}표</div>
       <section className='w-full bg-white rounded-t-xl overflow-y-scroll'>
         {DUMMYCANDIDATERANKING.slice(1).map((candidate,idx) => {
           return (
-            <div key={candidate.name} className="flex justify-between items-center w-[100%] h-[70px] text-[28px] px-[30px] border-b border-gray-200">
+            <div key={candidate.leaderName} className="flex justify-between items-center w-[100%] h-[70px] text-[28px] px-[30px] border-b border-gray-200">
               <div className='basis-[40px] flex justify-center'>{idx+2}</div>
               <div className="flex items-center">
-                {candidate.name}
+                {candidate.leaderName}
               </div>
               <div>{candidate.voteCount}표</div>
             </div>
