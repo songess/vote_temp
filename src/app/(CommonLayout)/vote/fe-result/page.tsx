@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { voteFetch, voteFetchWithToken } from '@apis/fetchAPI';
 import { Header } from '@components/all/Header';
 import ArrowBackSVG from '@public/arrowBack.svg';
@@ -8,11 +8,11 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 interface Candidate {
-	leaderName: string;
-	voteCount: number;
+  leaderName: string;
+  voteCount: number;
 }
 
-const DUMMYCANDIDATERANKING:Candidate[] = [
+const DUMMYCANDIDATERANKING: Candidate[] = [
   { leaderName: '김다희', voteCount: 10 },
   { leaderName: '김동혁', voteCount: 9 },
   { leaderName: '김민영', voteCount: 8 },
@@ -27,13 +27,14 @@ const DUMMYCANDIDATERANKING:Candidate[] = [
 
 export default function Page() {
   const router = useRouter();
-  const [candidateRanking, setCandidateRanking] = useState<Candidate[]>(DUMMYCANDIDATERANKING);
+  const [candidateRanking, setCandidateRanking] = useState<Candidate[]>(
+    DUMMYCANDIDATERANKING
+  );
 
   useEffect(() => {
     const fetchData = async () => {
-
       try {
-        const response = await voteFetch.get('vote/fe-result',);
+        const response = await voteFetch.get('vote/fe-result');
         if (response.ok) {
           const data = await response.json();
           if (data) {
@@ -55,21 +56,22 @@ export default function Page() {
           router.back();
         }}
       />
-      <div className='w-[120px] h-[120px] bg-white flex justify-center items-center rounded-full text-[24px] font-semibold relative'>
-        <div className='absolute top-[-24px] left-[-18px]'>
+      <div className="w-[100px] h-[120px] bg-white flex justify-center items-center rounded-full text-[20px] font-semibold relative">
+        <div className="absolute top-[-24px] left-[-18px]">
           <CrownSVG />
         </div>
         {candidateRanking[0].leaderName}
       </div>
       <div className="my-[10px]">{candidateRanking[0].voteCount}표</div>
-      <section className='w-full bg-white rounded-t-xl overflow-y-scroll'>
-        {candidateRanking.slice(1).map((candidate,idx) => {
+      <section className="w-full bg-white rounded-t-xl overflow-y-scroll">
+        {candidateRanking.slice(1).map((candidate, idx) => {
           return (
-            <div key={candidate.leaderName} className="flex justify-between items-center w-[100%] h-[70px] text-[28px] px-[30px] border-b border-gray-200">
-              <div className='basis-[40px] flex justify-center'>{idx+2}</div>
-              <div className="flex items-center">
-                {candidate.leaderName}
-              </div>
+            <div
+              key={candidate.leaderName}
+              className="flex justify-between items-center w-[100%] h-[60px] text-[20px] px-[30px] border-b border-gray-200"
+            >
+              <div className="basis-[20px] flex justify-center">{idx + 2}</div>
+              <div className="flex items-center">{candidate.leaderName}</div>
               <div>{candidate.voteCount}표</div>
             </div>
           );

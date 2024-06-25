@@ -33,7 +33,7 @@ export default function Page() {
       'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0cGZsYSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE3MTkyODgxNzZ9.sEMFxwWSihPzDNx3IJpUewEEkDLhlcAKkiIxIPLl1aOr3MCY4t3sAOdP46af5lz_YfAAqeZeytp_mym0el23iQ';
     try {
       const response = await voteFetchWithToken.post(
-        '/vote/be',
+        'vote/be',
         { leaderName: CandidateName[votedIdx], userName: 'name' },
         token
       );
@@ -54,7 +54,7 @@ export default function Page() {
         'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0cGZsYSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE3MTkyODgxNzZ9.sEMFxwWSihPzDNx3IJpUewEEkDLhlcAKkiIxIPLl1aOr3MCY4t3sAOdP46af5lz_YfAAqeZeytp_mym0el23iQ';
 
       try {
-        const response = await voteFetchWithToken.get('/vote/fe', token);
+        const response = await voteFetchWithToken.get('vote/be', token);
         if (response.ok) {
           const data = await response.json();
           setIsVoted(data.isVoted);
@@ -77,14 +77,14 @@ export default function Page() {
         }}
       />
       <h1 className="py-[30px] text-[28px]">BE 파트장 투표</h1>
-      <section className="flex flex-wrap gap-[30px] w-full">
+      <section className="flex flex-wrap gap-[20px] w-full">
         {CandidateName.map((name, idx) => (
           <button
             key={idx}
             onClick={() => {
               setVotedIdx(idx);
             }}
-            className={`basis-[calc(50%-15px)] h-[70px] bg-white rounded-[10px] flex justify-center items-center shadow-md text-[28px] font-semibold ${
+            className={`basis-[calc(50%-10px)] h-[60px] bg-white rounded-[10px] flex justify-center items-center shadow-md text-[20px] font-semibold ${
               idx === votedIdx ? 'border-2 border-themeColor' : ''
             }`}
           >
@@ -102,7 +102,7 @@ export default function Page() {
       </div>
       <button
         onClick={handleSubmit}
-        className={`bg-themeColor text-white w-full h-[70px] rounded-[10px] mt-[20px] mb-[40px] text-[28px] font-semibold ${
+        className={`bg-themeColor text-white w-full h-[60px] rounded-[10px] mt-[20px] mb-[40px] text-[28px] font-semibold ${
           isVoted || status !== 'FE' || votedIdx === -1
             ? 'opacity-50 cursor-not-allowed'
             : ''

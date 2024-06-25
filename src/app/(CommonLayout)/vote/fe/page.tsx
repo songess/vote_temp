@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import ArrowBackSVG from '@public/arrowBack.svg';
 import { Header } from '@components/all/Header';
 import { useRouter } from 'next/navigation';
@@ -30,11 +30,12 @@ export default function Page() {
   const handleSubmit = async () => {
     // const cookie = cookies();
     // const token = cookie.get('token');
-    const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0cGZsYSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE3MTkyODgxNzZ9.sEMFxwWSihPzDNx3IJpUewEEkDLhlcAKkiIxIPLl1aOr3MCY4t3sAOdP46af5lz_YfAAqeZeytp_mym0el23iQ';
+    const token =
+      'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0cGZsYSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE3MTkyODgxNzZ9.sEMFxwWSihPzDNx3IJpUewEEkDLhlcAKkiIxIPLl1aOr3MCY4t3sAOdP46af5lz_YfAAqeZeytp_mym0el23iQ';
 
     try {
       const response = await voteFetchWithToken.post(
-        '/vote/fe',
+        'vote/fe',
         { leaderName: CandidateName[votedIdx], userName: 'name' },
         token
       );
@@ -51,7 +52,8 @@ export default function Page() {
     const fetchData = async () => {
       // const cookie = cookies();
       // const token = cookie.get('token');
-      const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkbWR0biIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE3MTkzMTg1MzV9.1Bo2PY6RpBT_1XRjOhp0zAhzB2CDZrMwCik7rPuN1-_RO0RX_dkYEWX_HYMDdJsvsZUOG3cUkPpis7r7IBpxCw';
+      const token =
+        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkbWR0biIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE3MTkzMTg1MzV9.1Bo2PY6RpBT_1XRjOhp0zAhzB2CDZrMwCik7rPuN1-_RO0RX_dkYEWX_HYMDdJsvsZUOG3cUkPpis7r7IBpxCw';
 
       try {
         const response = await voteFetchWithToken.get('vote/fe', token);
@@ -77,14 +79,14 @@ export default function Page() {
         }}
       />
       <h1 className="py-[30px] text-[28px]">FE 파트장 투표</h1>
-      <section className="flex flex-wrap gap-[30px] w-full">
+      <section className="flex flex-wrap gap-[20px] w-full">
         {CandidateName.map((name, idx) => (
           <button
             key={idx}
             onClick={() => {
               setVotedIdx(idx);
             }}
-            className={`basis-[calc(50%-15px)] h-[70px] bg-white rounded-[10px] flex justify-center items-center shadow-md text-[28px] font-semibold ${
+            className={`basis-[calc(50%-10px)] h-[60px] bg-white rounded-[10px] flex justify-center items-center shadow-md text-[20px] font-semibold ${
               idx === votedIdx ? 'border-2 border-themeColor' : ''
             }`}
           >
@@ -102,18 +104,12 @@ export default function Page() {
       </div>
       <button
         onClick={handleSubmit}
-        className={`bg-themeColor text-white w-full h-[70px] rounded-[10px] mt-[20px] mb-[40px] text-[28px] font-semibold ${
-          isVoted ||
-          status !== 'FE' ||
-          votedIdx === -1
+        className={`bg-themeColor text-white w-full h-[60px] rounded-[10px] mt-[20px] mb-[40px] text-[28px] font-semibold ${
+          isVoted || status !== 'FE' || votedIdx === -1
             ? 'opacity-50 cursor-not-allowed'
             : ''
         }`}
-        disabled={
-          isVoted ||
-          status !== 'FE' ||
-          votedIdx === -1
-        }
+        disabled={isVoted || status !== 'FE' || votedIdx === -1}
       >
         {DUMMYRESPONSE.isVoted ? '투표완료' : '투표하기'}
       </button>

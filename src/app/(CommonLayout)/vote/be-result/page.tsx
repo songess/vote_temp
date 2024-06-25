@@ -69,9 +69,9 @@ export default function Page() {
           return (
             <div
               key={candidate.leaderName}
-              className="flex justify-between items-center w-[100%] h-[70px] text-[28px] px-[30px] border-b border-gray-200"
+              className="flex justify-between items-center w-[100%] h-[60px] text-[20px] px-[30px] border-b border-gray-200"
             >
-              <div className="basis-[40px] flex justify-center">{idx + 2}</div>
+              <div className="basis-[20px] flex justify-center">{idx + 2}</div>
               <div className="flex items-center">{candidate.leaderName}</div>
               <div>{candidate.voteCount}표</div>
             </div>

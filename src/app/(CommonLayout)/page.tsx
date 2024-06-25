@@ -15,10 +15,10 @@ export default function Page() {
       {Cards.map((card) => (
         <div
           key={card.name}
-          className="w-full h-[160px] bg-white flex justify-center items-center rounded-[12px] shadow-md cursor-pointer"
+          className="w-full h-[120px] bg-white flex justify-center items-center rounded-[12px] shadow-md cursor-pointer"
           onClick={() => {router.push(card.url)}}
         >
-          <h1 className="text-[40px] font-bold">{card.name}</h1>
+          <h1 className="text-[32px] font-bold">{card.name}</h1>
         </div>
       ))}
     </div>
