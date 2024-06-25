@@ -1,9 +1,8 @@
 'use client';
-import { voteFetchWithToken } from '@apis/fetchAPI';
+import { voteFetch, voteFetchWithToken } from '@apis/fetchAPI';
 import { Header } from '@components/all/Header';
 import ArrowBackSVG from '@public/arrowBack.svg';
 import CrownSVG from '@public/crown.svg';
-import { cookies } from 'next/headers';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -34,11 +33,8 @@ export default function Page() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const cookie = cookies();
-      const token = cookie.get('token');
-
       try {
-        const response = await voteFetchWithToken.get('vote/be-result', token);
+        const response = await voteFetch.get('vote/be-result');
         if (response.ok) {
           const data = await response.json();
           if (data) {

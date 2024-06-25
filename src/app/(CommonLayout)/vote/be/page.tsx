@@ -4,7 +4,6 @@ import { Header } from '@components/all/Header';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { voteFetchWithToken } from '@apis/fetchAPI';
-import { cookies } from 'next/headers';
 
 const CandidateName = [
   '임형준',
@@ -28,18 +27,19 @@ export default function Page() {
   const [status, setStatus] = useState<string>('FE');
 
   const handleSubmit = async () => {
-    const cookie = cookies();
-    const token = cookie.get('token');
-
+    // const cookie = cookies();
+    // const token = cookie.get('token');
+    const token =
+      'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0cGZsYSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE3MTkyODgxNzZ9.sEMFxwWSihPzDNx3IJpUewEEkDLhlcAKkiIxIPLl1aOr3MCY4t3sAOdP46af5lz_YfAAqeZeytp_mym0el23iQ';
     try {
       const response = await voteFetchWithToken.post(
-        '/vote/fe',
+        '/vote/be',
         { leaderName: CandidateName[votedIdx], userName: 'name' },
         token
       );
       if (response.ok) {
         alert('투표가 완료되었습니다.');
-        router.push('/vote/fe-result');
+        router.push('/vote/be-result');
       }
     } catch (e) {
       console.error(e);
@@ -48,8 +48,10 @@ export default function Page() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const cookie = cookies();
-      const token = cookie.get('token');
+      // const cookie = cookies();
+      // const token = cookie.get('token');
+      const token =
+        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0cGZsYSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE3MTkyODgxNzZ9.sEMFxwWSihPzDNx3IJpUewEEkDLhlcAKkiIxIPLl1aOr3MCY4t3sAOdP46af5lz_YfAAqeZeytp_mym0el23iQ';
 
       try {
         const response = await voteFetchWithToken.get('/vote/fe', token);
@@ -93,7 +95,7 @@ export default function Page() {
       <div
         className="text-themeColor text-[20px] font-semibold self-end mt-[20px] grow cursor-pointer"
         onClick={() => {
-          router.push('/vote/fe-result');
+          router.push('/vote/be-result');
         }}
       >
         결과보기 ▶︎
