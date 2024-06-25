@@ -1,8 +1,11 @@
-'use client';
+"use client";
+import { voteFetchWithToken } from '@apis/fetchAPI';
 import { Header } from '@components/all/Header';
 import ArrowBackSVG from '@public/arrowBack.svg';
 import CrownSVG from '@public/crown.svg';
+import { cookies } from 'next/headers';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 interface Candidate {
 	leaderName: string;
@@ -24,6 +27,27 @@ const DUMMYCANDIDATERANKING:Candidate[] = [
 
 export default function Page() {
   const router = useRouter();
+  const [candidateRanking, setCandidateRanking] = useState<Candidate[]>(DUMMYCANDIDATERANKING);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const cookie = cookies();
+      const token = cookie.get('token');
+
+      try {
+        const response = await voteFetchWithToken.get('/vote/fe-result', token);
+        if (response.ok) {
+          const data = await response.json();
+          if (data) {
+            setCandidateRanking(data);
+          }
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div className="flex flex-col w-full h-full relative px-5 pt-[120px] items-center">
       <Header />
@@ -37,11 +61,11 @@ export default function Page() {
         <div className='absolute top-[-24px] left-[-18px]'>
           <CrownSVG />
         </div>
-        {DUMMYCANDIDATERANKING[0].leaderName}
+        {candidateRanking[0].leaderName}
       </div>
-      <div className="my-[10px]">{DUMMYCANDIDATERANKING[0].voteCount}표</div>
+      <div className="my-[10px]">{candidateRanking[0].voteCount}표</div>
       <section className='w-full bg-white rounded-t-xl overflow-y-scroll'>
-        {DUMMYCANDIDATERANKING.slice(1).map((candidate,idx) => {
+        {candidateRanking.slice(1).map((candidate,idx) => {
           return (
             <div key={candidate.leaderName} className="flex justify-between items-center w-[100%] h-[70px] text-[28px] px-[30px] border-b border-gray-200">
               <div className='basis-[40px] flex justify-center'>{idx+2}</div>
