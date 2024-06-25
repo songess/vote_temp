@@ -1,5 +1,5 @@
 "use client";
-import { voteFetchWithToken } from '@apis/fetchAPI';
+import { voteFetch, voteFetchWithToken } from '@apis/fetchAPI';
 import { Header } from '@components/all/Header';
 import ArrowBackSVG from '@public/arrowBack.svg';
 import CrownSVG from '@public/crown.svg';
@@ -31,11 +31,9 @@ export default function Page() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const cookie = cookies();
-      const token = cookie.get('token');
 
       try {
-        const response = await voteFetchWithToken.get('/vote/fe-result', token);
+        const response = await voteFetch.get('vote/fe-result',);
         if (response.ok) {
           const data = await response.json();
           if (data) {

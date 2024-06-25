@@ -30,7 +30,7 @@ export default function Page() {
   const handleSubmit = async () => {
     // const cookie = cookies();
     // const token = cookie.get('token');
-    const token = 'token';
+    const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0cGZsYSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE3MTkyODgxNzZ9.sEMFxwWSihPzDNx3IJpUewEEkDLhlcAKkiIxIPLl1aOr3MCY4t3sAOdP46af5lz_YfAAqeZeytp_mym0el23iQ';
 
     try {
       const response = await voteFetchWithToken.post(
@@ -51,7 +51,7 @@ export default function Page() {
     const fetchData = async () => {
       // const cookie = cookies();
       // const token = cookie.get('token');
-      const token = 'token';
+      const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkbWR0biIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE3MTkzMTg1MzV9.1Bo2PY6RpBT_1XRjOhp0zAhzB2CDZrMwCik7rPuN1-_RO0RX_dkYEWX_HYMDdJsvsZUOG3cUkPpis7r7IBpxCw';
 
       try {
         const response = await voteFetchWithToken.get('vote/fe', token);

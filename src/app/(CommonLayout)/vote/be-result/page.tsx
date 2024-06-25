@@ -38,7 +38,7 @@ export default function Page() {
       const token = cookie.get('token');
 
       try {
-        const response = await voteFetchWithToken.get('/vote/fe-result', token);
+        const response = await voteFetchWithToken.get('vote/be-result', token);
         if (response.ok) {
           const data = await response.json();
           if (data) {

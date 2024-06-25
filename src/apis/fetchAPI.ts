@@ -1,13 +1,11 @@
 class Fetch {
-  async post(url: string, data: any) {
+  async get(url: string) {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/${url}`,
       {
-        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
         credentials: 'include',
       }
     );
